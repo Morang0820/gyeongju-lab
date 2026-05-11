@@ -1,0 +1,92 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Noto Serif KR', serif">
+  <defs>
+    <radialGradient id="bg3" cx="50%" cy="60%" r="70%">
+      <stop offset="0%" stop-color="#0a1510"/>
+      <stop offset="100%" stop-color="#080d08"/>
+    </radialGradient>
+    <radialGradient id="glow3" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#4a8a52" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#4a8a52" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="div3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4a8a52" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#4a8a52" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#4a8a52" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg3)"/>
+  <rect width="800" height="500" fill="url(#glow3)"/>
+
+  <!-- 별 -->
+  <circle cx="50"  cy="30"  r="1"   fill="#fff" opacity="0.4"/>
+  <circle cx="140" cy="18"  r="0.8" fill="#fff" opacity="0.35"/>
+  <circle cx="280" cy="44"  r="1.2" fill="#fff" opacity="0.5"/>
+  <circle cx="420" cy="22"  r="0.8" fill="#fff" opacity="0.4"/>
+  <circle cx="560" cy="38"  r="1"   fill="#fff" opacity="0.45"/>
+  <circle cx="680" cy="16"  r="0.8" fill="#fff" opacity="0.3"/>
+  <circle cx="760" cy="42"  r="1"   fill="#fff" opacity="0.4"/>
+
+  <!-- 왼쪽 숲 일러스트 -->
+  <!-- 나무들 (계림 느낌) -->
+  <!-- 나무 1 (가운데 큰 것) -->
+  <line x1="120" y1="460" x2="120" y2="260" stroke="#2a1e0e" stroke-width="10" stroke-linecap="round"/>
+  <line x1="120" y1="340" x2="80"  y2="290" stroke="#2a1e0e" stroke-width="5" stroke-linecap="round"/>
+  <line x1="120" y1="310" x2="160" y2="265" stroke="#2a1e0e" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="120" cy="240" rx="52" ry="38" fill="#1a3a1e" opacity="0.9"/>
+  <ellipse cx="80"  cy="272" rx="36" ry="28" fill="#1e4022" opacity="0.85"/>
+  <ellipse cx="162" cy="252" rx="32" ry="24" fill="#1a3a1e" opacity="0.8"/>
+  <!-- 나무 2 (왼쪽 작은 것) -->
+  <line x1="48"  y1="460" x2="48"  y2="330" stroke="#2a1e0e" stroke-width="6" stroke-linecap="round"/>
+  <ellipse cx="48"  cy="310" rx="34" ry="26" fill="#162e18" opacity="0.85"/>
+  <!-- 나무 3 (오른쪽) -->
+  <line x1="200" y1="460" x2="200" y2="300" stroke="#2a1e0e" stroke-width="7" stroke-linecap="round"/>
+  <ellipse cx="200" cy="278" rx="40" ry="30" fill="#1a3a1e" opacity="0.8"/>
+  <!-- 나무 4 (배경 작은 것들) -->
+  <line x1="30"  y1="460" x2="30"  y2="360" stroke="#1e1a0e" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="30"  cy="344" rx="24" ry="18" fill="#122814" opacity="0.7"/>
+  <line x1="230" y1="460" x2="230" y2="350" stroke="#1e1a0e" stroke-width="5" stroke-linecap="round"/>
+  <ellipse cx="230" cy="334" rx="28" ry="20" fill="#162e18" opacity="0.7"/>
+  <!-- 바닥 풀 -->
+  <rect x="0" y="450" width="260" height="50" fill="#0e1e10"/>
+  <path d="M0 452 Q30 445 60 452 Q90 459 120 452 Q150 445 180 452 Q210 459 240 452 Q260 448 260 452" fill="none" stroke="#1e3a20" stroke-width="1.5" opacity="0.7"/>
+  <!-- 반딧불 느낌 점 -->
+  <circle cx="90"  cy="350" r="2" fill="#90ee90" opacity="0.3"/>
+  <circle cx="150" cy="310" r="1.5" fill="#90ee90" opacity="0.25"/>
+  <circle cx="60"  cy="380" r="1.5" fill="#90ee90" opacity="0.2"/>
+
+  <!-- 구분선 -->
+  <rect x="272" y="60" width="1" height="380" fill="url(#div3)" opacity="0.5"/>
+
+  <!-- 오른쪽 콘텐츠 -->
+  <text x="312" y="72" font-size="10" fill="#4a8a52" letter-spacing="4">STAGE 03</text>
+  <line x1="312" y1="80" x2="780" y2="80" stroke="#4a8a52" stroke-width="0.5" opacity="0.35"/>
+
+  <text x="312" y="132" font-size="38" fill="#d4a843" font-weight="bold" letter-spacing="2">계림</text>
+  <text x="312" y="160" font-size="13" fill="#c4a882" letter-spacing="6">鷄林  ·  GYERIM</text>
+  <rect x="312" y="174" width="60" height="1.5" fill="#4a8a52" opacity="0.8"/>
+
+  <!-- 카드 -->
+  <rect x="312" y="192" width="200" height="78" rx="2" fill="#4a8a52" fill-opacity="0.06" stroke="#4a8a52" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="328" y="213" font-size="9" fill="#4a8a52" letter-spacing="3">MEANING</text>
+  <text x="328" y="235" font-size="13" fill="#f5efe6">닭이 울던 숲</text>
+  <text x="328" y="254" font-size="11" fill="#c4a882">鷄(닭 계) · 林(숲 림)</text>
+
+  <rect x="526" y="192" width="240" height="78" rx="2" fill="#4a8a52" fill-opacity="0.06" stroke="#4a8a52" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="542" y="213" font-size="9" fill="#4a8a52" letter-spacing="3">LEGEND</text>
+  <text x="542" y="235" font-size="13" fill="#f5efe6">김알지 탄생 설화</text>
+  <text x="542" y="254" font-size="11" fill="#c4a882">신라 김씨 왕족의 시조</text>
+
+  <!-- 설화 내용 -->
+  <text x="312" y="308" font-size="13" fill="#f5efe6" opacity="0.9">탈해왕이 밤에 서쪽 숲에서 닭 우는 소리를 듣고</text>
+  <text x="312" y="328" font-size="13" fill="#f5efe6" opacity="0.9">찾아가 보니 금빛 상자에서 아이가 나왔어요.</text>
+  <text x="312" y="358" font-size="13" fill="#c4a882" opacity="0.8">그 아이가 바로 김알지 — 신라 김씨 왕족의 시조.</text>
+  <text x="312" y="378" font-size="13" fill="#c4a882" opacity="0.8">이후 이 숲을 '계림(鷄林)'이라 부르게 됐어요.</text>
+
+  <!-- 퀴즈 힌트 -->
+  <rect x="312" y="410" width="456" height="44" rx="2" fill="#d4a843" fill-opacity="0.08" stroke="#d4a843" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="328" y="428" font-size="9" fill="#d4a843" letter-spacing="3">QUIZ HINT</text>
+  <text x="328" y="447" font-size="12" fill="#d4a843">시조의 이름과, '鷄'가 어떤 동물인지 기억하세요.</text>
+
+  <text x="780" y="482" font-size="10" fill="#8b7355" text-anchor="end" opacity="0.6">03 / 04</text>
+</svg>

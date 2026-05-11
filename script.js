@@ -190,8 +190,7 @@ function buildMap() {
     g.setAttribute('id', `mapNode${s.id}`);
     g.style.cursor = 'pointer';
     g.addEventListener('click', () => {
-      toggleStage(s.id);
-      document.getElementById(`stage${s.id}`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+      openSlide(s.id);
     });
 
     // 원
@@ -244,6 +243,46 @@ function updateMap() {
     }
   });
 }
+
+// =============================================
+// 슬라이드 모달
+// =============================================
+const slideFiles = {
+  1: 'slides/01_daereungwon.svg',
+  2: 'slides/02_cheomseongdae.svg',
+  3: 'slides/03_gyerim.svg',
+  4: 'slides/04_hwangnidan.svg',
+};
+
+function openSlide(stageId) {
+  const modal = document.getElementById('slideModal');
+  const img = document.getElementById('slideImg');
+  const btn = document.getElementById('slideGotoBtn');
+  img.src = slideFiles[stageId];
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  btn.onclick = () => {
+    closeSlide();
+    toggleStage(stageId);
+    setTimeout(() => {
+      document.getElementById(`stage${stageId}`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+  };
+}
+
+function closeSlide() {
+  const modal = document.getElementById('slideModal');
+  modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// 배경 클릭 시 닫기
+document.addEventListener('DOMContentLoaded', () => {
+  const modal = document.getElementById('slideModal');
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeSlide();
+  });
+});
 
 // =============================================
 // 별 생성

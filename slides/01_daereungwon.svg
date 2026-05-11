@@ -1,0 +1,88 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Noto Serif KR', serif">
+  <defs>
+    <radialGradient id="bg1" cx="30%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#1e1508"/>
+      <stop offset="100%" stop-color="#0d0a04"/>
+    </radialGradient>
+    <radialGradient id="glow1" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c4a882" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#c4a882" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="divider" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b7355" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#8b7355" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8b7355" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- 배경 -->
+  <rect width="800" height="500" fill="url(#bg1)"/>
+  <rect width="800" height="500" fill="url(#glow1)"/>
+
+  <!-- 별 -->
+  <circle cx="60" cy="40" r="1.2" fill="#fff" opacity="0.5"/>
+  <circle cx="120" cy="25" r="0.8" fill="#fff" opacity="0.4"/>
+  <circle cx="200" cy="55" r="1" fill="#fff" opacity="0.35"/>
+  <circle cx="340" cy="20" r="0.8" fill="#fff" opacity="0.45"/>
+  <circle cx="480" cy="38" r="1.2" fill="#fff" opacity="0.5"/>
+  <circle cx="600" cy="18" r="0.8" fill="#fff" opacity="0.3"/>
+  <circle cx="720" cy="44" r="1" fill="#fff" opacity="0.4"/>
+  <circle cx="760" cy="28" r="0.8" fill="#fff" opacity="0.35"/>
+
+  <!-- 왼쪽 고분 일러스트 -->
+  <!-- 고분 3개 (크기 다르게) -->
+  <ellipse cx="110" cy="390" rx="100" ry="55" fill="#2a1e0e" opacity="0.9"/>
+  <ellipse cx="110" cy="388" rx="96" ry="52" fill="#3d2b10" opacity="0.7"/>
+  <ellipse cx="60" cy="410" rx="62" ry="34" fill="#2a1e0e" opacity="0.9"/>
+  <ellipse cx="60" cy="408" rx="58" ry="31" fill="#3d2b10" opacity="0.6"/>
+  <ellipse cx="190" cy="420" rx="48" ry="26" fill="#2a1e0e" opacity="0.8"/>
+  <!-- 고분 잔디 라인 -->
+  <ellipse cx="110" cy="388" rx="96" ry="52" fill="none" stroke="#5a4020" stroke-width="1" opacity="0.5"/>
+  <ellipse cx="60" cy="408" rx="58" ry="31" fill="none" stroke="#5a4020" stroke-width="1" opacity="0.4"/>
+  <!-- 돌담 -->
+  <rect x="0" y="430" width="240" height="70" fill="#1a1208"/>
+  <path d="M0 432 Q20 428 40 432 Q60 436 80 432 Q100 428 120 432 Q140 436 160 432 Q180 428 200 432 Q220 436 240 432" fill="none" stroke="#3d2b10" stroke-width="2" opacity="0.6"/>
+  <path d="M0 445 Q20 441 40 445 Q60 449 80 445 Q100 441 120 445 Q140 449 160 445 Q180 441 200 445 Q220 449 240 445" fill="none" stroke="#3d2b10" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- 구분선 (세로) -->
+  <rect x="270" y="60" width="1" height="380" fill="url(#divider)" opacity="0.4"/>
+
+  <!-- 오른쪽 콘텐츠 영역 -->
+  <!-- 스테이지 번호 -->
+  <text x="310" y="82" font-size="10" fill="#8b7355" letter-spacing="4">STAGE 01</text>
+  <line x1="310" y1="90" x2="780" y2="90" stroke="#8b7355" stroke-width="0.5" opacity="0.4"/>
+
+  <!-- 제목 -->
+  <text x="310" y="140" font-size="38" fill="#d4a843" font-weight="bold" letter-spacing="2">대릉원</text>
+  <text x="310" y="168" font-size="13" fill="#c4a882" letter-spacing="6">大陵苑  ·  DAEREUNGWON</text>
+
+  <!-- 구분선 -->
+  <rect x="310" y="184" width="60" height="1.5" fill="#8b7355" opacity="0.8"/>
+
+  <!-- 핵심 정보 카드들 -->
+  <!-- 카드 1 -->
+  <rect x="310" y="200" width="220" height="80" rx="2" fill="#c4a882" fill-opacity="0.06" stroke="#8b7355" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="326" y="222" font-size="9" fill="#8b7355" letter-spacing="3">OVERVIEW</text>
+  <text x="326" y="244" font-size="13" fill="#f5efe6">신라 왕족의 고분군</text>
+  <text x="326" y="262" font-size="11" fill="#c4a882">총 23기의 능묘 · 사적 제512호</text>
+
+  <!-- 카드 2 -->
+  <rect x="548" y="200" width="220" height="80" rx="2" fill="#c4a882" fill-opacity="0.06" stroke="#8b7355" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="564" y="222" font-size="9" fill="#8b7355" letter-spacing="3">HIGHLIGHT</text>
+  <text x="564" y="244" font-size="13" fill="#f5efe6">천마총</text>
+  <text x="564" y="262" font-size="11" fill="#c4a882">천마도 · 금관 출토 · 5세기</text>
+
+  <!-- 본문 설명 -->
+  <text x="310" y="318" font-size="13" fill="#f5efe6" opacity="0.9">경주 도심에 자리한 신라 고분 공원으로,</text>
+  <text x="310" y="338" font-size="13" fill="#f5efe6" opacity="0.9">황남대총·천마총 등 왕릉급 무덤이 모여 있어요.</text>
+  <text x="310" y="368" font-size="13" fill="#c4a882" opacity="0.8">천마총 내부에서 발견된 천마도는 신라 회화의</text>
+  <text x="310" y="388" font-size="13" fill="#c4a882" opacity="0.8">유일한 실물로, 지금도 경주박물관에 전시 중.</text>
+
+  <!-- 퀴즈 힌트 박스 -->
+  <rect x="310" y="415" width="458" height="44" rx="2" fill="#d4a843" fill-opacity="0.08" stroke="#d4a843" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="326" y="432" font-size="9" fill="#d4a843" letter-spacing="3">QUIZ HINT</text>
+  <text x="326" y="450" font-size="12" fill="#d4a843">'천마도'가 발견된 능의 이름과, '릉(陵)'의 한자 뜻을 기억하세요.</text>
+
+  <!-- 하단 페이지 -->
+  <text x="780" y="482" font-size="10" fill="#8b7355" text-anchor="end" opacity="0.6">01 / 04</text>
+</svg>

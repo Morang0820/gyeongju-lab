@@ -1,0 +1,89 @@
+<svg viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Noto Serif KR', serif">
+  <defs>
+    <radialGradient id="bg2" cx="70%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#0e1520"/>
+      <stop offset="100%" stop-color="#0a0c10"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="72%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#d4a843" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#d4a843" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="div2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8b7355" stop-opacity="0"/>
+      <stop offset="40%" stop-color="#8b7355" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#8b7355" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="500" fill="url(#bg2)"/>
+  <rect width="800" height="500" fill="url(#glow2)"/>
+
+  <!-- 별 -->
+  <circle cx="80"  cy="35"  r="1.5" fill="#fff" opacity="0.7"/>
+  <circle cx="160" cy="20"  r="0.8" fill="#fff" opacity="0.4"/>
+  <circle cx="260" cy="48"  r="1"   fill="#fff" opacity="0.35"/>
+  <circle cx="400" cy="18"  r="0.8" fill="#fff" opacity="0.5"/>
+  <circle cx="500" cy="42"  r="1.2" fill="#fff" opacity="0.4"/>
+  <circle cx="650" cy="28"  r="1"   fill="#fff" opacity="0.6"/>
+  <circle cx="740" cy="50"  r="0.8" fill="#fff" opacity="0.35"/>
+  <!-- 달 -->
+  <circle cx="700" cy="70" r="28" fill="#f5efe6" opacity="0.1"/>
+  <circle cx="706" cy="65" r="24" fill="#0a0c10" opacity="0.7"/>
+
+  <!-- 왼쪽 콘텐츠 -->
+  <text x="40" y="72" font-size="10" fill="#8b7355" letter-spacing="4">STAGE 02</text>
+  <line x1="40" y1="80" x2="440" y2="80" stroke="#8b7355" stroke-width="0.5" opacity="0.4"/>
+
+  <text x="40" y="132" font-size="38" fill="#d4a843" font-weight="bold" letter-spacing="2">첨성대</text>
+  <text x="40" y="160" font-size="13" fill="#c4a882" letter-spacing="5">瞻星臺  ·  CHEOMSEONGDAE</text>
+  <rect x="40" y="174" width="60" height="1.5" fill="#8b7355" opacity="0.8"/>
+
+  <!-- 정보 카드 2개 -->
+  <rect x="40" y="192" width="190" height="78" rx="2" fill="#c4a882" fill-opacity="0.06" stroke="#8b7355" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="56" y="213" font-size="9" fill="#8b7355" letter-spacing="3">BUILT</text>
+  <text x="56" y="235" font-size="13" fill="#f5efe6">선덕여왕 재위</text>
+  <text x="56" y="254" font-size="11" fill="#c4a882">632 ~ 647년 · 신라 27대 왕</text>
+
+  <rect x="244" y="192" width="190" height="78" rx="2" fill="#c4a882" fill-opacity="0.06" stroke="#8b7355" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="260" y="213" font-size="9" fill="#8b7355" letter-spacing="3">STRUCTURE</text>
+  <text x="260" y="235" font-size="13" fill="#f5efe6">화강암 362개</text>
+  <text x="260" y="254" font-size="11" fill="#c4a882">총 27단 · 높이 약 9.17m</text>
+
+  <!-- 설명 -->
+  <text x="40" y="310" font-size="13" fill="#f5efe6" opacity="0.9">동아시아에서 현존하는 가장 오래된 천문대로,</text>
+  <text x="40" y="330" font-size="13" fill="#f5efe6" opacity="0.9">별자리를 관측해 농사와 계절을 예측했어요.</text>
+  <text x="40" y="360" font-size="13" fill="#c4a882" opacity="0.8">몸통의 돌 단수(27단)는 선덕여왕이</text>
+  <text x="40" y="380" font-size="13" fill="#c4a882" opacity="0.8">신라의 27번째 왕임을 상징한다는 설도 있어요.</text>
+
+  <!-- 퀴즈 힌트 -->
+  <rect x="40" y="410" width="400" height="44" rx="2" fill="#d4a843" fill-opacity="0.08" stroke="#d4a843" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="56" y="428" font-size="9" fill="#d4a843" letter-spacing="3">QUIZ HINT</text>
+  <text x="56" y="447" font-size="12" fill="#d4a843">돌의 단수와 만든 왕의 이름을 기억하세요.</text>
+
+  <!-- 세로 구분선 -->
+  <rect x="458" y="40" width="1" height="420" fill="url(#div2)" opacity="0.35"/>
+
+  <!-- 오른쪽 첨성대 일러스트 -->
+  <!-- 기단 -->
+  <rect x="554" y="400" width="140" height="22" rx="2" fill="#8b7355" opacity="0.85"/>
+  <!-- 몸통 하부 -->
+  <path d="M568 400 L582 330 L652 330 L666 400Z" fill="#c4a882" opacity="0.45"/>
+  <path d="M568 400 L582 330 L652 330 L666 400Z" fill="none" stroke="#8b7355" stroke-width="1.2"/>
+  <!-- 창문 -->
+  <rect x="600" y="350" width="34" height="24" rx="1" fill="#0a0c10" stroke="#8b7355" stroke-width="0.8"/>
+  <!-- 몸통 상부 -->
+  <path d="M582 330 L594 240 L640 240 L652 330Z" fill="#c4a882" opacity="0.38"/>
+  <path d="M582 330 L594 240 L640 240 L652 330Z" fill="none" stroke="#8b7355" stroke-width="1.2"/>
+  <!-- 윗 뚜껑 -->
+  <rect x="576" y="222" width="82" height="22" rx="1" fill="#8b7355" opacity="0.8"/>
+  <rect x="590" y="225" width="54" height="16" rx="1" fill="#0a0c10" opacity="0.7"/>
+  <!-- 별빛 후광 -->
+  <circle cx="617" cy="185" r="4" fill="#d4a843" opacity="0.9"/>
+  <circle cx="617" cy="185" r="12" fill="none" stroke="#d4a843" stroke-width="0.6" opacity="0.4"/>
+  <circle cx="617" cy="185" r="22" fill="none" stroke="#d4a843" stroke-width="0.4" opacity="0.2"/>
+  <!-- 야간 조명 효과 -->
+  <ellipse cx="617" cy="430" rx="80" ry="10" fill="#d4a843" opacity="0.06"/>
+
+  <!-- 페이지 -->
+  <text x="780" y="482" font-size="10" fill="#8b7355" text-anchor="end" opacity="0.6">02 / 04</text>
+</svg>
