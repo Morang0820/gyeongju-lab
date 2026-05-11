@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>황리단길 별빛 탐험</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<div class="wrap">
+
+  <!-- 헤더 -->
+  <div class="header">
+    <div class="header-badge">GYEONGJU NIGHT QUIZ</div>
+    <h1>황리단길<br>별빛 탐험</h1>
+    <p>신라 천년의 밤을 걸으며<br>숨겨진 단서를 찾아보세요</p>
+  </div>
+
+  <!-- 첨성대 일러스트 -->
+  <div class="cheom-wrap">
+    <svg class="cheom-svg" viewBox="0 0 80 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="105" width="64" height="12" rx="1" fill="#8b7355" opacity="0.8"/>
+      <path d="M14 105 L18 72 L62 72 L66 105Z" fill="#c4a882" opacity="0.5"/>
+      <path d="M14 105 L18 72 L62 72 L66 105Z" fill="none" stroke="#8b7355" stroke-width="0.8"/>
+      <rect x="30" y="82" width="20" height="14" rx="1" fill="#1a1208" stroke="#8b7355" stroke-width="0.6"/>
+      <path d="M18 72 L22 38 L58 38 L62 72Z" fill="#c4a882" opacity="0.4"/>
+      <path d="M18 72 L22 38 L58 38 L62 72Z" fill="none" stroke="#8b7355" stroke-width="0.8"/>
+      <rect x="16" y="28" width="48" height="12" rx="1" fill="#8b7355" opacity="0.7"/>
+      <rect x="24" y="30" width="32" height="8" rx="1" fill="#1a1208" opacity="0.6"/>
+      <circle cx="40" cy="14" r="2" fill="#d4a843" opacity="0.9"/>
+      <circle cx="40" cy="14" r="5" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- 진행바 -->
+  <div>
+    <div class="progress-wrap">
+      <div class="progress-bar" id="progressBar" style="width:0%"></div>
+    </div>
+    <div class="progress-text" id="progressText">0 / 8 단서 수집</div>
+  </div>
+
+  <!-- 스테이지 -->
+  <div id="stages">
+
+    <!-- STAGE 1 -->
+    <div class="stage" id="stage1">
+      <div class="stage-header" onclick="toggleStage(1)">
+        <div class="stage-num" id="num1">1</div>
+        <div class="stage-info">
+          <div class="stage-location">📍 대릉원 돌담길</div>
+          <div class="stage-title">신라의 잠든 왕들</div>
+        </div>
+        <div class="stage-arrow" id="arrow1">▼</div>
+      </div>
+      <div class="stage-body" id="body1">
+        <div class="question">
+          <div class="question-num">QUESTION 01</div>
+          대릉원 안 무덤 중, <strong>천마도</strong>가 발견된 능의 이름은 무엇인가요?
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q1a" placeholder="답을 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(1,'q1a')">
+          <button class="btn-check" onclick="checkAnswer(1,'q1a')">확인</button>
+        </div>
+        <div class="feedback" id="fb1a"></div>
+
+        <div class="question" style="margin-top:20px">
+          <div class="question-num">QUESTION 02</div>
+          대릉원의 <strong>'릉(陵)'</strong>은 어떤 의미를 가진 한자인가요?
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q1b" placeholder="답을 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(2,'q1b')">
+          <button class="btn-check" onclick="checkAnswer(2,'q1b')">확인</button>
+        </div>
+        <div class="feedback" id="fb1b"></div>
+
+        <div class="hint-card" id="hint1">
+          <div class="hint-label">획득한 단서</div>
+          <div class="hint-letters" id="hintLetters1"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 2 -->
+    <div class="stage" id="stage2">
+      <div class="stage-header" onclick="toggleStage(2)">
+        <div class="stage-num" id="num2">2</div>
+        <div class="stage-info">
+          <div class="stage-location">📍 첨성대</div>
+          <div class="stage-title">별을 담은 돌탑</div>
+        </div>
+        <div class="stage-arrow" id="arrow2">▼</div>
+      </div>
+      <div class="stage-body" id="body2">
+        <div class="question">
+          <div class="question-num">QUESTION 03</div>
+          첨성대를 쌓은 돌의 단수는 총 몇 단인가요?
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q2a" placeholder="숫자로 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(3,'q2a')">
+          <button class="btn-check" onclick="checkAnswer(3,'q2a')">확인</button>
+        </div>
+        <div class="feedback" id="fb2a"></div>
+
+        <div class="question" style="margin-top:20px">
+          <div class="question-num">QUESTION 04</div>
+          첨성대를 만든 신라의 왕은 누구인가요?
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q2b" placeholder="답을 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(4,'q2b')">
+          <button class="btn-check" onclick="checkAnswer(4,'q2b')">확인</button>
+        </div>
+        <div class="feedback" id="fb2b"></div>
+
+        <div class="hint-card" id="hint2">
+          <div class="hint-label">획득한 단서</div>
+          <div class="hint-letters" id="hintLetters2"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 3 -->
+    <div class="stage" id="stage3">
+      <div class="stage-header" onclick="toggleStage(3)">
+        <div class="stage-num" id="num3">3</div>
+        <div class="stage-info">
+          <div class="stage-location">📍 계림</div>
+          <div class="stage-title">닭이 울던 숲</div>
+        </div>
+        <div class="stage-arrow" id="arrow3">▼</div>
+      </div>
+      <div class="stage-body" id="body3">
+        <div class="question">
+          <div class="question-num">QUESTION 05</div>
+          계림에서 탄생 설화가 있는 신라 김씨 왕족의 시조 이름은?
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q3a" placeholder="답을 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(5,'q3a')">
+          <button class="btn-check" onclick="checkAnswer(5,'q3a')">확인</button>
+        </div>
+        <div class="feedback" id="fb3a"></div>
+
+        <div class="question" style="margin-top:20px">
+          <div class="question-num">QUESTION 06</div>
+          계림(鷄林)이라는 이름에 들어있는 한자 '鷄'는 어떤 동물인가요?
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q3b" placeholder="답을 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(6,'q3b')">
+          <button class="btn-check" onclick="checkAnswer(6,'q3b')">확인</button>
+        </div>
+        <div class="feedback" id="fb3b"></div>
+
+        <div class="hint-card" id="hint3">
+          <div class="hint-label">획득한 단서</div>
+          <div class="hint-letters" id="hintLetters3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STAGE 4 -->
+    <div class="stage" id="stage4">
+      <div class="stage-header" onclick="toggleStage(4)">
+        <div class="stage-num" id="num4">4</div>
+        <div class="stage-info">
+          <div class="stage-location">📍 황리단길 소품샵</div>
+          <div class="stage-title">골목의 마지막 비밀</div>
+        </div>
+        <div class="stage-arrow" id="arrow4">▼</div>
+      </div>
+      <div class="stage-body" id="body4">
+        <div class="question">
+          <div class="question-num">QUESTION 07</div>
+          대릉원 예술창고 건물 외벽의 색깔은 무엇인가요?<br>
+          <span style="font-size:12px;color:var(--stone)">(직접 가서 확인하세요!)</span>
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q4a" placeholder="색깔을 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(7,'q4a')">
+          <button class="btn-check" onclick="checkAnswer(7,'q4a')">확인</button>
+        </div>
+        <div class="feedback" id="fb4a"></div>
+
+        <div class="question" style="margin-top:20px">
+          <div class="question-num">QUESTION 08</div>
+          황리단길의 '황'은 어느 동네 이름에서 왔나요?
+        </div>
+        <div class="input-row">
+          <input class="answer-input" id="q4b" placeholder="답을 입력하세요" onkeydown="if(event.key==='Enter')checkAnswer(8,'q4b')">
+          <button class="btn-check" onclick="checkAnswer(8,'q4b')">확인</button>
+        </div>
+        <div class="feedback" id="fb4b"></div>
+
+        <div class="hint-card" id="hint4">
+          <div class="hint-label">획득한 단서</div>
+          <div class="hint-letters" id="hintLetters4"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 최종 정답 -->
+  <div class="final-section">
+    <div class="final-label">FINAL ANSWER</div>
+    <div class="final-letters">
+      <div class="final-slot" id="slot0"></div>
+      <div class="final-slot" id="slot1"></div>
+      <div class="final-slot" id="slot2"></div>
+      <div class="final-slot" id="slot3"></div>
+      <div class="final-slot" id="slot4"></div>
+      <div class="final-slot" id="slot5"></div>
+      <div class="final-slot" id="slot6"></div>
+      <div class="final-slot" id="slot7"></div>
+    </div>
+    <button class="btn-final" id="finalBtn" onclick="showFinal()">정답 공개</button>
+    <div class="final-reveal" id="finalReveal">
+      <h2>✦ 첨성대 ✦</h2>
+      <p>신라 천년의 별빛을 담은 곳<br>오늘 이 키링이 그 기억을 함께 간직할 거예요 🌙</p>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

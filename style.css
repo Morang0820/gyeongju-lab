@@ -1,0 +1,311 @@
+:root {
+  --stone: #c4a882;
+  --stone-dark: #8b7355;
+  --earth: #3d2b1f;
+  --cream: #f5efe6;
+  --gold: #d4a843;
+  --night: #1a1208;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  background: var(--night);
+  color: var(--cream);
+  font-family: 'Noto Serif KR', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* 별 */
+.stars {
+  position: fixed; top:0; left:0; width:100%; height:100%;
+  pointer-events: none; z-index:0;
+}
+.star {
+  position: absolute; background: #fff; border-radius: 50%;
+  animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+}
+@keyframes twinkle {
+  0%,100%{opacity:0.2} 50%{opacity:1}
+}
+
+.wrap {
+  position: relative; z-index:1;
+  max-width: 480px; margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+/* 헤더 */
+.header {
+  text-align: center;
+  padding: 48px 0 32px;
+  animation: fadeDown 0.8s ease both;
+}
+@keyframes fadeDown {
+  from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)}
+}
+.header-badge {
+  display: inline-block;
+  border: 1px solid var(--stone);
+  color: var(--stone);
+  font-size: 11px;
+  letter-spacing: 3px;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+}
+.header h1 {
+  font-family: 'Gowun Batang', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.header p {
+  font-size: 13px;
+  color: var(--stone);
+  letter-spacing: 1px;
+  line-height: 1.8;
+}
+
+/* 첨성대 SVG */
+.cheom-wrap {
+  display: flex; justify-content: center;
+  margin: 8px 0 32px;
+  animation: fadeDown 0.8s 0.2s ease both;
+}
+.cheom-svg { width: 80px; opacity: 0.85; }
+
+/* 진행바 */
+.progress-wrap {
+  background: rgba(196,168,130,0.1);
+  border-radius: 20px;
+  height: 4px;
+  margin-bottom: 32px;
+  overflow: hidden;
+  animation: fadeDown 0.8s 0.3s ease both;
+}
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--stone-dark), var(--gold));
+  border-radius: 20px;
+  transition: width 0.6s ease;
+}
+.progress-text {
+  text-align: right;
+  font-size: 11px;
+  color: var(--stone);
+  margin-top: 6px;
+  letter-spacing: 1px;
+}
+
+/* 스테이지 카드 */
+.stage {
+  background: rgba(196,168,130,0.06);
+  border: 1px solid rgba(196,168,130,0.2);
+  border-radius: 2px;
+  margin-bottom: 16px;
+  overflow: hidden;
+  animation: fadeUp 0.6s ease both;
+}
+.stage:nth-child(1){animation-delay:0.1s}
+.stage:nth-child(2){animation-delay:0.2s}
+.stage:nth-child(3){animation-delay:0.3s}
+.stage:nth-child(4){animation-delay:0.4s}
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)}
+}
+.stage-header {
+  display: flex; align-items: center; gap:14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.stage-header:hover { background: rgba(196,168,130,0.08); }
+
+.stage-num {
+  width: 32px; height: 32px; flex-shrink:0;
+  border: 1px solid var(--stone-dark);
+  border-radius: 50%;
+  display: flex; align-items:center; justify-content:center;
+  font-size: 12px; color: var(--stone);
+  font-family: 'Gowun Batang', serif;
+}
+.stage-num.done {
+  background: var(--stone-dark);
+  border-color: var(--stone-dark);
+  color: var(--cream);
+}
+.stage-info { flex:1 }
+.stage-location {
+  font-size: 10px; color: var(--stone);
+  letter-spacing: 2px; margin-bottom: 3px;
+}
+.stage-title {
+  font-family: 'Gowun Batang', serif;
+  font-size: 16px; color: var(--cream);
+}
+.stage-arrow {
+  font-size: 12px; color: var(--stone);
+  transition: transform 0.3s;
+}
+.stage-arrow.open { transform: rotate(180deg); }
+
+.stage-body {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid rgba(196,168,130,0.1);
+}
+.stage-body.open { display: block; }
+
+/* 문제 */
+.question {
+  background: rgba(196,168,130,0.05);
+  border-left: 2px solid var(--stone-dark);
+  padding: 14px 16px;
+  margin: 16px 0 12px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--cream);
+}
+.question-num {
+  font-size: 10px; color: var(--stone);
+  letter-spacing: 2px; margin-bottom: 6px;
+}
+
+/* 입력 */
+.input-row { display:flex; gap:8px; margin-bottom:8px; }
+.answer-input {
+  flex:1;
+  background: rgba(196,168,130,0.08);
+  border: 1px solid rgba(196,168,130,0.25);
+  border-radius: 2px;
+  padding: 10px 14px;
+  color: var(--cream);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.answer-input:focus { border-color: var(--stone); }
+.answer-input.correct { border-color: var(--gold); background: rgba(212,168,67,0.1); }
+.answer-input.wrong { border-color: #c0392b; background: rgba(192,57,43,0.08); }
+
+.btn-check {
+  background: var(--stone-dark);
+  border: none; border-radius: 2px;
+  color: var(--cream);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+.btn-check:hover { background: var(--stone); }
+
+.feedback {
+  font-size: 12px; min-height:18px;
+  transition: all 0.3s;
+  line-height: 1.6;
+}
+.feedback.correct { color: var(--gold); }
+.feedback.wrong { color: #e74c3c; }
+
+/* 힌트 카드 */
+.hint-card {
+  display: none;
+  margin-top: 16px;
+  background: rgba(212,168,67,0.08);
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 2px;
+  padding: 16px;
+  text-align: center;
+}
+.hint-card.show {
+  display: block;
+  animation: popIn 0.4s ease;
+}
+@keyframes popIn {
+  from{opacity:0;transform:scale(0.9)} to{opacity:1;transform:scale(1)}
+}
+.hint-label {
+  font-size: 10px; color: var(--stone);
+  letter-spacing: 3px; margin-bottom: 10px;
+}
+.hint-letters {
+  display: flex; gap:8px; justify-content:center; flex-wrap:wrap;
+}
+.hint-letter {
+  width: 36px; height: 36px;
+  background: var(--stone-dark);
+  border-radius: 2px;
+  display: flex; align-items:center; justify-content:center;
+  font-family: 'Gowun Batang', serif;
+  font-size: 18px; color: var(--gold);
+  animation: flipIn 0.4s ease both;
+}
+@keyframes flipIn {
+  from{opacity:0;transform:rotateY(90deg)} to{opacity:1;transform:rotateY(0)}
+}
+
+/* 최종 정답 */
+.final-section {
+  margin-top: 32px;
+  border: 1px solid rgba(212,168,67,0.3);
+  border-radius: 2px;
+  padding: 24px 20px;
+  text-align: center;
+  background: rgba(212,168,67,0.04);
+  animation: fadeUp 0.6s 0.5s ease both;
+}
+.final-label {
+  font-size: 10px; color: var(--stone);
+  letter-spacing: 3px; margin-bottom: 16px;
+}
+.final-letters {
+  display: flex; gap:6px; justify-content:center;
+  flex-wrap: wrap; margin-bottom: 20px;
+}
+.final-slot {
+  width: 36px; height: 44px;
+  border-bottom: 2px solid var(--stone-dark);
+  display: flex; align-items:center; justify-content:center;
+  font-family: 'Gowun Batang', serif;
+  font-size: 20px; color: var(--gold);
+  transition: all 0.3s;
+}
+.final-slot.filled { border-color: var(--gold); }
+
+.btn-final {
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Noto Serif KR', serif;
+  font-size: 13px;
+  padding: 12px 28px;
+  cursor: pointer;
+  letter-spacing: 2px;
+  transition: all 0.2s;
+  border-radius: 2px;
+}
+.btn-final:hover { background: var(--gold); color: var(--night); }
+
+.final-reveal {
+  display: none;
+  margin-top: 20px;
+}
+.final-reveal.show {
+  display: block;
+  animation: popIn 0.5s ease;
+}
+.final-reveal h2 {
+  font-family: 'Gowun Batang', serif;
+  font-size: 28px; color: var(--gold);
+  margin-bottom: 8px;
+}
+.final-reveal p {
+  font-size: 13px; color: var(--stone);
+  line-height: 1.8;
+}
