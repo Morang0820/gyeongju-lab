@@ -44,6 +44,24 @@
     <div class="progress-text" id="progressText">0 / 8 단서 수집</div>
   </div>
 
+  <!-- 미니 지도 -->
+  <div class="map-section">
+    <div class="map-label">오늘의 탐험 경로</div>
+    <div class="map-wrap">
+      <svg id="miniMap" viewBox="0 0 420 370" width="100%" xmlns="http://www.w3.org/2000/svg">
+        <!-- 배경 격자 -->
+        <defs>
+          <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(196,168,130,0.06)" stroke-width="0.5"/>
+          </pattern>
+        </defs>
+        <rect width="420" height="370" fill="url(#grid)"/>
+        <!-- 노드는 script.js에서 동적으로 생성 -->
+      </svg>
+      <div class="map-hint">노드를 탭하면 해당 스테이지로 이동해요</div>
+    </div>
+  </div>
+
   <!-- 스테이지 -->
   <div id="stages">
 
@@ -216,10 +234,6 @@
       <div class="final-slot" id="slot7"></div>
     </div>
     <button class="btn-final" id="finalBtn" onclick="showFinal()">정답 공개</button>
-    <div class="final-reveal" id="finalReveal">
-      <h2>✦ 첨성대 ✦</h2>
-      <p>신라 천년의 별빛을 담은 곳<br>오늘 이 키링이 그 기억을 함께 간직할 거예요 🌙</p>
-    </div>
   </div>
 
 </div>

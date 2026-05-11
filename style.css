@@ -82,7 +82,7 @@ body {
   background: rgba(196,168,130,0.1);
   border-radius: 20px;
   height: 4px;
-  margin-bottom: 32px;
+  margin-bottom: 8px;
   overflow: hidden;
   animation: fadeDown 0.8s 0.3s ease both;
 }
@@ -96,7 +96,38 @@ body {
   text-align: right;
   font-size: 11px;
   color: var(--stone);
-  margin-top: 6px;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+}
+
+/* 미니 지도 */
+.map-section {
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s 0.1s ease both;
+}
+.map-label {
+  font-size: 10px;
+  color: var(--stone);
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.map-wrap {
+  background: rgba(196,168,130,0.04);
+  border: 1px solid rgba(196,168,130,0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  padding: 8px;
+}
+#miniMap {
+  display: block;
+  width: 100%;
+}
+.map-hint {
+  text-align: center;
+  font-size: 10px;
+  color: rgba(196,168,130,0.5);
+  padding: 4px 0 2px;
   letter-spacing: 1px;
 }
 
@@ -131,10 +162,11 @@ body {
   display: flex; align-items:center; justify-content:center;
   font-size: 12px; color: var(--stone);
   font-family: 'Gowun Batang', serif;
+  transition: background 0.3s, border-color 0.3s;
 }
 .stage-num.done {
   background: var(--stone-dark);
-  border-color: var(--stone-dark);
+  border-color: var(--gold);
   color: var(--cream);
 }
 .stage-info { flex:1 }

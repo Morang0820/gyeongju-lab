@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>축하합니다!</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600&family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --night: #0d0a14;
+    --gold: #d4a843;
+    --stone: #c4a882;
+    --stone-dark: #8b7355;
+    --cream: #f5efe6;
+    --pink-light: #fce8f0;
+    --pink: #f0a0be;
+    --pink-deep: #d4607a;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--night);
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Noto Serif KR', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 배경 그라디언트 */
+  .bg {
+    position: fixed; inset:0; z-index:0;
+    background: radial-gradient(ellipse at 50% 60%, #1a0a1e 0%, #0d0a14 70%);
+  }
+
+  /* 벚꽃 낙화 */
+  .petals-wrap {
+    position: fixed; inset:0; z-index:1;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    top: -30px;
+    border-radius: 50% 0 50% 0;
+    opacity: 0;
+    animation: fall linear infinite;
+  }
+  @keyframes fall {
+    0%   { opacity:0; transform: translateY(0) rotate(0deg) translateX(0); }
+    10%  { opacity: 0.85; }
+    90%  { opacity: 0.7; }
+    100% { opacity:0; transform: translateY(110vh) rotate(720deg) translateX(var(--sway)); }
+  }
+
+  /* 메인 콘텐츠 */
+  .content {
+    position: relative; z-index:10;
+    text-align: center;
+    padding: 40px 32px 32px;
+    max-width: 400px;
+    width: 100%;
+    animation: riseIn 1s ease both;
+  }
+  @keyframes riseIn {
+    from { opacity:0; transform:translateY(30px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  /* 첨성대 SVG 일러스트 (벚꽃과 함께) */
+  .scene-wrap {
+    position: relative;
+    width: 280px;
+    height: 260px;
+    margin: 0 auto 32px;
+  }
+
+  /* 축하 뱃지 */
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    font-size: 10px;
+    letter-spacing: 3px;
+    padding: 4px 14px;
+    margin-bottom: 18px;
+    animation: riseIn 1s 0.3s ease both;
+    opacity: 0;
+  }
+
+  .title {
+    font-family: 'Gowun Batang', serif;
+    font-size: 36px;
+    color: var(--gold);
+    margin-bottom: 6px;
+    animation: riseIn 1s 0.5s ease both;
+    opacity: 0;
+    line-height: 1.3;
+  }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--stone);
+    line-height: 1.9;
+    margin-bottom: 28px;
+    animation: riseIn 1s 0.7s ease both;
+    opacity: 0;
+  }
+
+  /* 답 표시 */
+  .answer-reveal {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 32px;
+    animation: riseIn 1s 0.9s ease both;
+    opacity: 0;
+  }
+  .answer-letter {
+    width: 40px; height: 48px;
+    background: rgba(212,168,67,0.1);
+    border: 1px solid rgba(212,168,67,0.4);
+    border-radius: 2px;
+    display: flex; align-items:center; justify-content:center;
+    font-family: 'Gowun Batang', serif;
+    font-size: 22px;
+    color: var(--gold);
+  }
+
+  /* 선물 안내 */
+  .gift-box {
+    background: rgba(240,160,190,0.08);
+    border: 1px solid rgba(240,160,190,0.25);
+    border-radius: 2px;
+    padding: 18px 20px;
+    animation: riseIn 1s 1.1s ease both;
+    opacity: 0;
+  }
+  .gift-icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+  .gift-text {
+    font-size: 14px;
+    color: var(--cream);
+    line-height: 1.9;
+    margin-bottom: 10px;
+  }
+  .gift-hint {
+    font-size: 11px;
+    color: var(--pink);
+    letter-spacing: 1px;
+  }
+
+  /* 글로우 효과 */
+  .glow {
+    position: absolute;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212,168,67,0.12) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%,100%{opacity:0.6;transform:translate(-50%,-50%) scale(1)}
+    50%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}
+  }
+
+  /* 별 */
+  .stars-bg { position:fixed; inset:0; z-index:0; pointer-events:none; }
+  .star-dot {
+    position:absolute; background:#fff; border-radius:50%;
+    animation: twinkle var(--d,3s) ease-in-out infinite var(--delay,0s);
+  }
+  @keyframes twinkle { 0%,100%{opacity:0.15} 50%{opacity:0.8} }
+</style>
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="stars-bg" id="starsBg"></div>
+<div class="petals-wrap" id="petalsWrap"></div>
+
+<div class="content">
+  <div class="glow"></div>
+
+  <!-- 첨성대 + 벚꽃 SVG 씬 -->
+  <div class="scene-wrap">
+    <svg viewBox="0 0 280 260" width="280" height="260" xmlns="http://www.w3.org/2000/svg">
+
+      <!-- 밤하늘 달 -->
+      <circle cx="230" cy="36" r="18" fill="#f5efe6" opacity="0.12"/>
+      <circle cx="236" cy="32" r="15" fill="#0d0a14" opacity="0.7"/>
+
+      <!-- 첨성대 기단 -->
+      <rect x="88" y="228" width="104" height="18" rx="2" fill="#8b7355" opacity="0.9"/>
+      <!-- 몸통 하부 -->
+      <path d="M96 228 L108 178 L172 178 L184 228Z" fill="#c4a882" opacity="0.55"/>
+      <path d="M96 228 L108 178 L172 178 L184 228Z" fill="none" stroke="#8b7355" stroke-width="1"/>
+      <!-- 창문 -->
+      <rect x="124" y="194" width="32" height="22" rx="1" fill="#0d0a14" opacity="0.85" stroke="#8b7355" stroke-width="0.8"/>
+      <!-- 몸통 상부 -->
+      <path d="M108 178 L116 124 L164 124 L172 178Z" fill="#c4a882" opacity="0.45"/>
+      <path d="M108 178 L116 124 L164 124 L172 178Z" fill="none" stroke="#8b7355" stroke-width="1"/>
+      <!-- 윗 뚜껑 -->
+      <rect x="102" y="110" width="76" height="18" rx="1" fill="#8b7355" opacity="0.85"/>
+      <rect x="114" y="113" width="52" height="12" rx="1" fill="#0d0a14" opacity="0.7"/>
+
+      <!-- 벚꽃 나무 왼쪽 -->
+      <!-- 가지 -->
+      <path d="M40 246 Q42 200 52 170 Q56 155 48 132" fill="none" stroke="#5a3e2b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M52 170 Q62 158 72 148" fill="none" stroke="#5a3e2b" stroke-width="2" stroke-linecap="round"/>
+      <path d="M48 150 Q36 138 28 122" fill="none" stroke="#5a3e2b" stroke-width="1.5" stroke-linecap="round"/>
+      <!-- 꽃송이 왼쪽 -->
+      <g opacity="0.9">
+        <circle cx="48" cy="128" r="18" fill="#f0a0be" opacity="0.5"/>
+        <circle cx="30" cy="118" r="14" fill="#fce8f0" opacity="0.55"/>
+        <circle cx="62" cy="118" r="12" fill="#f0a0be" opacity="0.45"/>
+        <circle cx="38" cy="108" r="10" fill="#fce8f0" opacity="0.5"/>
+        <circle cx="56" cy="106" r="9" fill="#f0a0be" opacity="0.4"/>
+        <circle cx="22" cy="108" r="9" fill="#fce8f0" opacity="0.4"/>
+        <circle cx="72" cy="140" r="10" fill="#f0a0be" opacity="0.45"/>
+      </g>
+      <!-- 꽃 디테일 -->
+      <g fill="#d4607a" opacity="0.6">
+        <circle cx="44" cy="122" r="3"/>
+        <circle cx="56" cy="116" r="2.5"/>
+        <circle cx="34" cy="114" r="2.5"/>
+        <circle cx="62" cy="126" r="2"/>
+        <circle cx="28" cy="122" r="2"/>
+      </g>
+
+      <!-- 벚꽃 나무 오른쪽 -->
+      <path d="M240 246 Q238 200 228 170 Q224 155 232 132" fill="none" stroke="#5a3e2b" stroke-width="3" stroke-linecap="round"/>
+      <path d="M228 170 Q218 158 208 148" fill="none" stroke="#5a3e2b" stroke-width="2" stroke-linecap="round"/>
+      <path d="M232 150 Q244 138 252 122" fill="none" stroke="#5a3e2b" stroke-width="1.5" stroke-linecap="round"/>
+      <g opacity="0.9">
+        <circle cx="232" cy="128" r="18" fill="#f0a0be" opacity="0.5"/>
+        <circle cx="250" cy="118" r="14" fill="#fce8f0" opacity="0.55"/>
+        <circle cx="218" cy="118" r="12" fill="#f0a0be" opacity="0.45"/>
+        <circle cx="242" cy="108" r="10" fill="#fce8f0" opacity="0.5"/>
+        <circle cx="224" cy="106" r="9" fill="#f0a0be" opacity="0.4"/>
+        <circle cx="258" cy="108" r="9" fill="#fce8f0" opacity="0.4"/>
+        <circle cx="208" cy="140" r="10" fill="#f0a0be" opacity="0.45"/>
+      </g>
+      <g fill="#d4607a" opacity="0.6">
+        <circle cx="236" cy="122" r="3"/>
+        <circle cx="224" cy="116" r="2.5"/>
+        <circle cx="246" cy="114" r="2.5"/>
+        <circle cx="218" cy="126" r="2"/>
+        <circle cx="252" cy="122" r="2"/>
+      </g>
+
+      <!-- 바닥 잔디/지면 -->
+      <ellipse cx="140" cy="248" rx="110" ry="6" fill="#3d2b1f" opacity="0.5"/>
+
+      <!-- 별빛 -->
+      <circle cx="140" cy="50" r="2.5" fill="#d4a843" opacity="0.9"/>
+      <circle cx="140" cy="50" r="6" fill="none" stroke="#d4a843" stroke-width="0.5" opacity="0.35"/>
+      <circle cx="100" cy="30" r="1.5" fill="#f5efe6" opacity="0.6"/>
+      <circle cx="180" cy="22" r="1" fill="#f5efe6" opacity="0.5"/>
+      <circle cx="210" cy="55" r="1.2" fill="#f5efe6" opacity="0.4"/>
+      <circle cx="70" cy="60" r="1" fill="#f5efe6" opacity="0.45"/>
+
+    </svg>
+  </div>
+
+  <div class="badge">CONGRATULATIONS</div>
+
+  <div class="title">탐험 완료!</div>
+
+  <div class="subtitle">
+    신라 천년의 밤을 함께 걸으며<br>
+    모든 단서를 모았어요 ✨
+  </div>
+
+  <div class="answer-reveal">
+    <div class="answer-letter">첨</div>
+    <div class="answer-letter">성</div>
+    <div class="answer-letter">대</div>
+  </div>
+
+  <div class="gift-box">
+    <div class="gift-icon">🎁</div>
+    <div class="gift-text">
+      이 화면을 출제자에게 보여주시면<br>
+      작은 선물이 기다릴지도?
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // 별 생성
+  const starsBg = document.getElementById('starsBg');
+  for (let i = 0; i < 50; i++) {
+    const s = document.createElement('div');
+    s.className = 'star-dot';
+    const size = Math.random() * 1.8 + 0.6;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*3}s;--delay:${Math.random()*3}s`;
+    starsBg.appendChild(s);
+  }
+
+  // 벚꽃 낙화 생성
+  const petalsWrap = document.getElementById('petalsWrap');
+  const petalColors = ['#fce8f0', '#f0a0be', '#f7c0d4', '#fad4e4', '#ffffff'];
+
+  function createPetal() {
+    const p = document.createElement('div');
+    p.className = 'petal';
+    const size = Math.random() * 10 + 5;
+    const left = Math.random() * 110 - 5;
+    const duration = Math.random() * 5 + 5;
+    const delay = Math.random() * 8;
+    const sway = (Math.random() - 0.5) * 120;
+    const color = petalColors[Math.floor(Math.random() * petalColors.length)];
+
+    p.style.cssText = `
+      width:${size}px; height:${size * 0.7}px;
+      left:${left}%;
+      background:${color};
+      opacity:0;
+      animation-duration:${duration}s;
+      animation-delay:${delay}s;
+      --sway:${sway}px;
+      transform-origin: center;
+    `;
+    petalsWrap.appendChild(p);
+    setTimeout(() => p.remove(), (duration + delay) * 1000);
+  }
+
+  // 초기 꽃잎 생성
+  for (let i = 0; i < 30; i++) createPetal();
+  // 주기적으로 추가
+  setInterval(createPetal, 400);
+</script>
+</body>
+</html>

@@ -1,5 +1,22 @@
 // =============================================
-// 정답 설정 — 수정이 필요한 경우 여기서만 바꾸세요
+// 문제별 힌트 글자 & 슬롯 위치 설정
+// letter: 힌트로 보여줄 글자 (섞인 순서)
+// slot:   최종 정답 칸 위치 (0~7, 왼쪽부터)
+// 슬롯 0~7 = ㅊ ㅓ ㅁ ㅅ ㅓ ㅇ ㄷ ㅐ 순서로 고정
+// =============================================
+const questionMap = [
+  { letter: 'ㅅ', slot: 3 },  // Q1 대릉원 Q1
+  { letter: 'ㄷ', slot: 6 },  // Q2 대릉원 Q2
+  { letter: 'ㅓ', slot: 1 },  // Q3 첨성대 Q1
+  { letter: 'ㅊ', slot: 0 },  // Q4 첨성대 Q2
+  { letter: 'ㅐ', slot: 7 },  // Q5 계림 Q1
+  { letter: 'ㅁ', slot: 2 },  // Q6 계림 Q2
+  { letter: 'ㅇ', slot: 5 },  // Q7 소품샵 Q1
+  { letter: 'ㅓ', slot: 4 },  // Q8 소품샵 Q2
+];
+
+// =============================================
+// 정답 설정 — 수정이 필요하면 여기서만 바꾸세요
 // =============================================
 const answers = {
   1: { accept: ['천마총'] },
@@ -12,24 +29,29 @@ const answers = {
   8: { accept: ['황남동', '황남'] }
 };
 
-// 힌트 글자 순서 (첨성대 자음/모음 분리)
-const letters = ['ㅊ', 'ㅓ', 'ㅁ', 'ㅅ', 'ㅓ', 'ㅇ', 'ㄷ', 'ㅐ'];
+// =============================================
+// 지도 스테이지 정보
+// =============================================
+const mapStages = [
+  { id: 1, label: '대릉원',   x: 100, y: 210 },
+  { id: 2, label: '첨성대',   x: 210, y: 110 },
+  { id: 3, label: '계림',     x: 320, y: 160 },
+  { id: 4, label: '황리단길', x: 210, y: 280 },
+];
 
 // =============================================
 // 상태 관리
 // =============================================
 const collected = {};
-const stageHints = { 1: [null, null], 2: [null, null], 3: [null, null], 4: [null, null] };
+const stageHints = { 1:[null,null], 2:[null,null], 3:[null,null], 4:[null,null] };
+const stageCleared = { 1:false, 2:false, 3:false, 4:false };
 
 // =============================================
-// 헬퍼 함수
+// 헬퍼
 // =============================================
 function getStageAndPos(qNum) {
-  const stage = Math.ceil(qNum / 2);
-  const pos = (qNum % 2 === 0) ? 1 : 0;
-  return { stage, pos };
+  return { stage: Math.ceil(qNum / 2), pos: qNum % 2 === 0 ? 1 : 0 };
 }
-
 function getFbId(qNum) {
   const { stage, pos } = getStageAndPos(qNum);
   return `fb${stage}${pos === 0 ? 'a' : 'b'}`;
@@ -40,27 +62,27 @@ function getFbId(qNum) {
 // =============================================
 function checkAnswer(qNum, inputId) {
   if (collected[qNum]) return;
-
   const input = document.getElementById(inputId);
   const val = input.value.trim();
   if (!val) return;
 
   const fbEl = document.getElementById(getFbId(qNum));
   const { stage, pos } = getStageAndPos(qNum);
-  const letter = letters[qNum - 1];
+  const { letter, slot } = questionMap[qNum - 1];
 
   const ok = answers[qNum].accept.some(
-    a => val.replace(/\s/g, '').toLowerCase() === a.replace(/\s/g, '').toLowerCase()
+    a => val.replace(/\s/g,'').toLowerCase() === a.replace(/\s/g,'').toLowerCase()
   );
 
   if (ok) {
     input.classList.add('correct');
     fbEl.className = 'feedback correct';
     fbEl.textContent = '✓ 정답입니다!';
-    collected[qNum] = letter;
-    updateSlot(qNum - 1, letter);
+    collected[qNum] = true;
+    updateSlot(slot, letter);
     updateStageHint(stage, pos, letter);
     updateProgress();
+    checkStageCleared(stage);
   } else {
     input.classList.add('wrong');
     fbEl.className = 'feedback wrong';
@@ -75,10 +97,15 @@ function checkAnswer(qNum, inputId) {
 // =============================================
 // UI 업데이트
 // =============================================
+function updateSlot(slot, letter) {
+  const slotEl = document.getElementById(`slot${slot}`);
+  slotEl.textContent = letter;
+  slotEl.classList.add('filled');
+}
+
 function updateStageHint(stage, pos, letter) {
   stageHints[stage][pos] = letter;
   const hints = stageHints[stage].filter(Boolean);
-
   if (hints.length > 0) {
     const card = document.getElementById(`hint${stage}`);
     const lettersEl = document.getElementById(`hintLetters${stage}`);
@@ -97,10 +124,13 @@ function updateStageHint(stage, pos, letter) {
   }
 }
 
-function updateSlot(idx, letter) {
-  const slot = document.getElementById(`slot${idx}`);
-  slot.textContent = letter;
-  slot.classList.add('filled');
+function checkStageCleared(stage) {
+  const q1 = (stage - 1) * 2 + 1;
+  const q2 = q1 + 1;
+  if (collected[q1] && collected[q2]) {
+    stageCleared[stage] = true;
+    updateMap();
+  }
 }
 
 function updateProgress() {
@@ -113,7 +143,7 @@ function toggleStage(num) {
   const body = document.getElementById(`body${num}`);
   const arrow = document.getElementById(`arrow${num}`);
   const isOpen = body.classList.contains('open');
-  [1, 2, 3, 4].forEach(n => {
+  [1,2,3,4].forEach(n => {
     document.getElementById(`body${n}`).classList.remove('open');
     document.getElementById(`arrow${n}`).classList.remove('open');
   });
@@ -129,12 +159,93 @@ function showFinal() {
     alert(`아직 ${8 - count}개의 단서가 남아있어요!`);
     return;
   }
-  document.getElementById('finalReveal').classList.add('show');
-  document.getElementById('finalBtn').style.display = 'none';
+  // 잠깐 반짝이고 축하 화면으로 이동
+  document.getElementById('finalBtn').textContent = '🌸 정답 공개 중...';
+  document.getElementById('finalBtn').style.opacity = '0.6';
+  setTimeout(() => {
+    window.location.href = 'congrats.html';
+  }, 800);
 }
 
 // =============================================
-// 초기화
+// 미니 지도
+// =============================================
+function buildMap() {
+  const svg = document.getElementById('miniMap');
+  const ns = 'http://www.w3.org/2000/svg';
+
+  // 이동 경로선
+  const pathD = mapStages.map((s, i) => `${i === 0 ? 'M' : 'L'}${s.x},${s.y}`).join(' ');
+  const pathEl = document.createElementNS(ns, 'path');
+  pathEl.setAttribute('d', pathD);
+  pathEl.setAttribute('fill', 'none');
+  pathEl.setAttribute('stroke', '#8b7355');
+  pathEl.setAttribute('stroke-width', '1.5');
+  pathEl.setAttribute('stroke-dasharray', '4 3');
+  svg.appendChild(pathEl);
+
+  // 스테이지 노드
+  mapStages.forEach(s => {
+    const g = document.createElementNS(ns, 'g');
+    g.setAttribute('id', `mapNode${s.id}`);
+    g.style.cursor = 'pointer';
+    g.addEventListener('click', () => {
+      toggleStage(s.id);
+      document.getElementById(`stage${s.id}`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+
+    // 원
+    const circle = document.createElementNS(ns, 'circle');
+    circle.setAttribute('cx', s.x);
+    circle.setAttribute('cy', s.y);
+    circle.setAttribute('r', '16');
+    circle.setAttribute('fill', '#3d2b1f');
+    circle.setAttribute('stroke', '#8b7355');
+    circle.setAttribute('stroke-width', '1.5');
+    circle.setAttribute('id', `mapCircle${s.id}`);
+    circle.style.transition = 'fill 0.4s, stroke 0.4s';
+
+    // 숫자
+    const num = document.createElementNS(ns, 'text');
+    num.setAttribute('x', s.x);
+    num.setAttribute('y', s.y + 4);
+    num.setAttribute('text-anchor', 'middle');
+    num.setAttribute('font-size', '11');
+    num.setAttribute('fill', '#c4a882');
+    num.setAttribute('font-family', 'Gowun Batang, serif');
+    num.textContent = s.id;
+
+    // 라벨
+    const label = document.createElementNS(ns, 'text');
+    label.setAttribute('x', s.x);
+    label.setAttribute('y', s.y + 32);
+    label.setAttribute('text-anchor', 'middle');
+    label.setAttribute('font-size', '9');
+    label.setAttribute('fill', '#c4a882');
+    label.setAttribute('font-family', 'Noto Serif KR, serif');
+    label.textContent = s.label;
+
+    g.appendChild(circle);
+    g.appendChild(num);
+    g.appendChild(label);
+    svg.appendChild(g);
+  });
+}
+
+function updateMap() {
+  mapStages.forEach(s => {
+    if (!stageCleared[s.id]) return;
+    const circle = document.getElementById(`mapCircle${s.id}`);
+    if (circle) {
+      circle.setAttribute('fill', '#8b7355');
+      circle.setAttribute('stroke', '#d4a843');
+      circle.setAttribute('stroke-width', '2');
+    }
+  });
+}
+
+// =============================================
+// 별 생성
 // =============================================
 function initStars() {
   const starsEl = document.getElementById('stars');
@@ -142,10 +253,14 @@ function initStars() {
     const s = document.createElement('div');
     s.className = 'star';
     const size = Math.random() * 2 + 1;
-    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random() * 100}%;left:${Math.random() * 100}%;--d:${2 + Math.random() * 3}s;--delay:${Math.random() * 3}s`;
+    s.style.cssText = `width:${size}px;height:${size}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${2+Math.random()*3}s;--delay:${Math.random()*3}s`;
     starsEl.appendChild(s);
   }
 }
 
+// =============================================
+// 초기화
+// =============================================
 initStars();
+buildMap();
 toggleStage(1);
