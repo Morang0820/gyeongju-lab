@@ -48,15 +48,66 @@
   <div class="map-section">
     <div class="map-label">오늘의 탐험 경로</div>
     <div class="map-wrap">
-      <svg id="miniMap" viewBox="0 0 420 370" width="100%" xmlns="http://www.w3.org/2000/svg">
-        <!-- 배경 격자 -->
-        <defs>
-          <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(196,168,130,0.06)" stroke-width="0.5"/>
-          </pattern>
-        </defs>
-        <rect width="420" height="370" fill="url(#grid)"/>
-        <!-- 노드는 script.js에서 동적으로 생성 -->
+      <svg id="miniMap" viewBox="0 0 420 380" width="100%" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- 배경 (야간 도시 베이스) -->
+        <rect width="420" height="380" fill="#2a2218"/>
+
+        <!-- 공원 영역 -->
+        <!-- 대릉원 -->
+        <rect x="60" y="40" width="140" height="130" rx="8" fill="#1e3020" opacity="0.9"/>
+        <rect x="62" y="42" width="136" height="126" rx="6" fill="none" stroke="#2d4a30" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- 첨성대·계림 공원 -->
+        <rect x="240" y="90" width="140" height="160" rx="8" fill="#1e3020" opacity="0.9"/>
+        <rect x="242" y="92" width="136" height="156" rx="6" fill="none" stroke="#2d4a30" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- 하단 공원 (월성 방향) -->
+        <rect x="120" y="260" width="200" height="80" rx="6" fill="#1e3020" opacity="0.6"/>
+
+        <!-- 도로 -->
+        <!-- 포석로 (메인 가로길) -->
+        <rect x="0" y="178" width="420" height="14" fill="#3a3020"/>
+        <!-- 중앙 세로길 -->
+        <rect x="196" y="0" width="12" height="380" fill="#3a3020" opacity="0.85"/>
+        <!-- 황리단길 방향 골목 (가로) -->
+        <rect x="0" y="140" width="200" height="7" fill="#332a1a"/>
+        <!-- 첨성대 방향 가로길 -->
+        <rect x="196" y="140" width="180" height="7" fill="#332a1a"/>
+        <!-- 하단 가로길 -->
+        <rect x="0" y="300" width="420" height="9" fill="#3a3020" opacity="0.7"/>
+        <!-- 왼쪽 세로 보조길 -->
+        <rect x="80" y="0" width="7" height="380" fill="#332a1a" opacity="0.6"/>
+        <!-- 오른쪽 세로 보조길 -->
+        <rect x="332" y="0" width="7" height="380" fill="#332a1a" opacity="0.6"/>
+
+        <!-- 건물 블록 (황리단길 상권 좌측) -->
+        <rect x="10" y="50"  width="62" height="82" rx="2" fill="#2e2416" opacity="0.9"/>
+        <rect x="10" y="148" width="62" height="22" rx="2" fill="#2e2416" opacity="0.8"/>
+        <rect x="10" y="198" width="62" height="94" rx="2" fill="#2e2416" opacity="0.8"/>
+        <rect x="10" y="310" width="62" height="60" rx="2" fill="#2e2416" opacity="0.7"/>
+
+        <!-- 건물 블록 우측 -->
+        <rect x="347" y="50"  width="63" height="82" rx="2" fill="#2e2416" opacity="0.8"/>
+        <rect x="347" y="198" width="63" height="94" rx="2" fill="#2e2416" opacity="0.7"/>
+        <rect x="347" y="310" width="63" height="60" rx="2" fill="#2e2416" opacity="0.7"/>
+
+        <!-- 하단 블록 -->
+        <rect x="88"  y="310" width="100" height="60" rx="2" fill="#2e2416" opacity="0.6"/>
+        <rect x="232" y="310" width="100" height="60" rx="2" fill="#2e2416" opacity="0.6"/>
+
+        <!-- 이동 경로 점선 -->
+        <!-- 1 대릉원 → 2 첨성대 -->
+        <path d="M 155 130 Q 202 148 262 148" fill="none" stroke="#8b7355" stroke-width="2" stroke-dasharray="5 4" opacity="0.8"/>
+        <!-- 2 첨성대 → 3 계림 -->
+        <path d="M 285 178 Q 296 205 296 232" fill="none" stroke="#8b7355" stroke-width="2" stroke-dasharray="5 4" opacity="0.8"/>
+        <!-- 3 계림 → 4 황리단길 -->
+        <path d="M 272 252 Q 208 258 158 192" fill="none" stroke="#8b7355" stroke-width="2" stroke-dasharray="5 4" opacity="0.8"/>
+
+        <!-- 지명 텍스트 -->
+        <text x="130" y="114" text-anchor="middle" font-size="9" fill="#4a8a52" font-family="Noto Serif KR,serif" opacity="0.85">대릉원</text>
+        <text x="312" y="188" text-anchor="middle" font-size="9" fill="#4a8a52" font-family="Noto Serif KR,serif" opacity="0.85">첨성대 · 계림</text>
+        <text x="40"  y="174" text-anchor="middle" font-size="8" fill="#7a6a4a" font-family="Noto Serif KR,serif" opacity="0.8">황리단길</text>
+
+        <!-- 스테이지 노드는 script.js에서 생성 -->
       </svg>
       <div class="map-hint">노드를 탭하면 해당 스테이지로 이동해요</div>
     </div>

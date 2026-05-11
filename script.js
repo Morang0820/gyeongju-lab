@@ -33,10 +33,10 @@ const answers = {
 // 지도 스테이지 정보
 // =============================================
 const mapStages = [
-  { id: 1, label: '대릉원',   x: 100, y: 210 },
-  { id: 2, label: '첨성대',   x: 210, y: 110 },
-  { id: 3, label: '계림',     x: 320, y: 160 },
-  { id: 4, label: '황리단길', x: 210, y: 280 },
+  { id: 1, label: '대릉원',   x: 130, y: 130 },
+  { id: 2, label: '첨성대',   x: 278, y: 148 },
+  { id: 3, label: '계림',     x: 296, y: 252 },
+  { id: 4, label: '황리단길', x: 130, y: 192 },
 ];
 
 // =============================================
@@ -215,14 +215,15 @@ function buildMap() {
     num.setAttribute('font-family', 'Gowun Batang, serif');
     num.textContent = s.id;
 
-    // 라벨
+    // 라벨 (노드 위쪽에 표시)
     const label = document.createElementNS(ns, 'text');
     label.setAttribute('x', s.x);
-    label.setAttribute('y', s.y + 32);
+    label.setAttribute('y', s.y - 22);
     label.setAttribute('text-anchor', 'middle');
-    label.setAttribute('font-size', '9');
-    label.setAttribute('fill', '#c4a882');
+    label.setAttribute('font-size', '10');
+    label.setAttribute('fill', '#d4a843');
     label.setAttribute('font-family', 'Noto Serif KR, serif');
+    label.setAttribute('font-weight', '600');
     label.textContent = s.label;
 
     g.appendChild(circle);
