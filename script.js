@@ -5,14 +5,14 @@
 // 슬롯 0~7 = ㅊ ㅓ ㅁ ㅅ ㅓ ㅇ ㄷ ㅐ 순서로 고정
 // =============================================
 const questionMap = [
-  { letter: 'ㅅ', slot: 3 },  // Q1 대릉원 Q1
-  { letter: 'ㄷ', slot: 6 },  // Q2 대릉원 Q2
-  { letter: 'ㅓ', slot: 1 },  // Q3 첨성대 Q1
-  { letter: 'ㅊ', slot: 0 },  // Q4 첨성대 Q2
-  { letter: 'ㅐ', slot: 7 },  // Q5 계림 Q1
-  { letter: 'ㅁ', slot: 2 },  // Q6 계림 Q2
-  { letter: 'ㅇ', slot: 5 },  // Q7 소품샵 Q1
-  { letter: 'ㅓ', slot: 4 },  // Q8 소품샵 Q2
+  { letter: 'ㅅ', slot: 3 },  // Q1 (대릉원 Q1)
+  { letter: 'ㄷ', slot: 6 },  // Q2 (대릉원 Q2)
+  { letter: 'ㅓ', slot: 4 },  // Q3 (첨성대 Q1)
+  { letter: 'ㅁ', slot: 2 },  // Q4 (첨성대 Q2)
+  { letter: 'ㅐ', slot: 7 },  // Q5 (계림 Q1)
+  { letter: 'ㅊ', slot: 0 },  // Q6 (계림 Q2)
+  { letter: 'ㅇ', slot: 5 },  // Q7 (소품샵 Q1)
+  { letter: 'ㅓ', slot: 1 },  // Q8 (소품샵 Q2)
 ];
 
 // =============================================
@@ -25,7 +25,7 @@ const answers = {
   4: { accept: ['선덕여왕', '선덕'] },
   5: { accept: ['김알지'] },
   6: { accept: ['닭', '계'] },
-  7: { accept: ['초록', '초록색', '녹색'] }, // ⚠️ 현장 확인 후 수정!
+  7: { accept: ['흰색', '하얀색', '흰', '하얀', '화이트'] },
   8: { accept: ['황남동', '황남'] }
 };
 
